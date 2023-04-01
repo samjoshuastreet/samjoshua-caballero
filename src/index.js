@@ -42,6 +42,8 @@ function signup(e) {
     createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
         // console.log('User created:', cred.user)
+
+        alert('User successfully created')
         signupForm.reset()
     })
     .catch((err) => {
@@ -55,7 +57,7 @@ const logoutButton = document.querySelector('#logout')
 logoutButton.addEventListener('click', () => {
     signOut(auth)
     .then(() => {
-        // console.log('the user signed out')
+        alert('the user signed out')
     })
     .catch((err) => {
         console.log(err.message )
@@ -72,7 +74,7 @@ loginButton.addEventListener('click', (e) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((cred) => {
-            // console.log('user logged in:', cred.user)
+            alert('user logged in: ' + cred.user.email)
         })
         .catch((err) => {
             console.log(err.message)
@@ -92,32 +94,32 @@ onAuthStateChanged(auth, (user) => {
 
     golgolLogin.addEventListener('click', (e) => {
         signInWithPopup(auth, provider)
-    })
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
 
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
+                // user name = displayName
+                // email = email
+                // photo = photoURL
+                // redirect 
+                alert('Welcome ' + user.displayName + '!');
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
 
-            // user name = displayName
-            // email = email
-            // photo = photoURL
-            // redirect 
-            alert('Welcome ' + user.displayName + '!');
-    }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+            alert(errorMessage)
+        });
+    })
 
-        alert(errorMessage)
-    });
+    
