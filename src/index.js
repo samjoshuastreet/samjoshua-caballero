@@ -1,10 +1,14 @@
+// Firebase Application Initialization
 import { initializeApp } from 'firebase/app'
+// Email and Password Sign In
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signOut, signInWithEmailAndPassword,
     onAuthStateChanged
 } from 'firebase/auth'
+// Sign In with Golgol
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAaCgX8I0wsHqlZnCxIUDowFe6rfWJZpA4",
@@ -19,7 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 
 // init services
-const auth = getAuth()
+const auth = getAuth(app)
 
 // signing users up
 const signupForm = document.querySelector('.login_form')
@@ -80,3 +84,40 @@ loginButton.addEventListener('click', (e) => {
 onAuthStateChanged(auth, (user) => {
     console.log('user status changed:', user)
 })
+
+    // Sign in with golgol
+    const provider = new GoogleAuthProvider(app);
+
+    const golgolLogin = document.querySelector('#google')
+
+    golgolLogin.addEventListener('click', (e) => {
+        signInWithPopup(auth, provider)
+    })
+
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+
+            // user name = displayName
+            // email = email
+            // photo = photoURL
+            // redirect 
+            alert('Welcome ' + user.displayName + '!');
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+
+        alert(errorMessage)
+    });
