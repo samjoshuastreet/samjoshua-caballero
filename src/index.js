@@ -5,7 +5,10 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signOut, signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    TwitterAuthProvider,
+    FacebookAuthProvider,
+    GithubAuthProvider 
 } from 'firebase/auth'
 // Sign In with Golgol
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -47,25 +50,29 @@ function signup(e) {
         signupForm.reset()
     })
     .catch((err) => {
-        console.log(err.message)
+        alert(err.message)
     })
 
 }
 
 // logging in and out
-const logoutButton = document.querySelector('#logout')
+const logoutButton = document.querySelector('#homepage_logout')
+var container2 = document.querySelector('.container2')
 logoutButton.addEventListener('click', () => {
+    
     signOut(auth)
     .then(() => {
-        alert('the user signed out')
+        container2.style.display = "none"
+        container.style.display = ""
     })
     .catch((err) => {
-        console.log(err.message )
+        alert(err.message )
     })
 })
 
 const loginForm = document.querySelector('.login_form')
 const loginButton = document.querySelector('#login')
+var container = document.querySelector('.container')
 loginButton.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -74,10 +81,11 @@ loginButton.addEventListener('click', (e) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((cred) => {
-            alert('user logged in: ' + cred.user.email)
+            container.style.display = "none"
+            container2.style.display = ""
         })
         .catch((err) => {
-            console.log(err.message)
+            alert(err.message)
         })
 
 })
@@ -93,6 +101,7 @@ onAuthStateChanged(auth, (user) => {
     const golgolLogin = document.querySelector('#google')
 
     golgolLogin.addEventListener('click', (e) => {
+
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -108,6 +117,9 @@ onAuthStateChanged(auth, (user) => {
                 // photo = photoURL
                 // redirect 
                 alert('Welcome ' + user.displayName + '!');
+
+                container.style.display = "none"
+                container2.style.display = ""
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
@@ -120,6 +132,106 @@ onAuthStateChanged(auth, (user) => {
 
             alert(errorMessage)
         });
+
+
     })
 
+// Sign In With Twitter
+const provider4 = new TwitterAuthProvider();
+const twitterLogin = document.querySelector('#twitter')
+twitterLogin.addEventListener('click', (e) => {
+    signInWithPopup(auth, provider4)
+    .then((result) => {
+        // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+        // You can use these server side with your app's credentials to access the Twitter API.
+        const credential = TwitterAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const secret = credential.secret;
+
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+        container.style.display = "none"
+        container2.style.display = ""
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = TwitterAuthProvider.credentialFromError(error);
+        // ...
+
+        alert(errorMessage)
+    });
+})
+
+// Sign In With Twitter
+const provider5 = new FacebookAuthProvider();
+const facebookLogin = document.querySelector('#facebook')
+facebookLogin.addEventListener('click', (e) => {
+
+    signInWithPopup(auth, provider5)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+  
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+  
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+
+      container.style.display = "none"
+      container2.style.display = ""
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+  
+      // ...
+      alert(err.message)
+    })
+
+})
     
+// Sign In With Github
+const provider2 = new FacebookAuthProvider();
+const githubLogin = document.querySelector('#github')
+githubLogin.addEventListener('click', (e) => {
+
+    signInWithPopup(auth, provider2)
+    .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+
+        container.style.display = "none"
+        container2.style.display = ""
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GithubAuthProvider.credentialFromError(error);
+        // ...
+
+        alert(err.message)
+  });
+
+})
