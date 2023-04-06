@@ -1,6 +1,6 @@
 // Firebase Application Initialization
 import { initializeApp } from 'firebase/app'
-// Email and Password Sign In
+// Email and Password Sign In, Twitter, Facebook, and Github
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -11,7 +11,21 @@ import {
     GithubAuthProvider 
 } from 'firebase/auth'
 // Sign In with Golgol
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { 
+    GoogleAuthProvider, 
+    signInWithPopup 
+} from "firebase/auth";
+// FIRESTORE
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    deleteDoc,
+    doc,
+    updateDoc
+} from 'firebase/firestore'
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAaCgX8I0wsHqlZnCxIUDowFe6rfWJZpA4",
@@ -27,6 +41,22 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const auth = getAuth(app)
+
+var container2 = document.querySelector('.container2')
+var container = document.querySelector('.container')
+var user_status = 0
+
+var user_status = new URLSearchParams(window.location.search).get('user_status')
+
+if (user_status == 1){
+    container.style.display = 'none'
+    container2.style.display = ""
+}else{
+    console.log('no one is logged in')
+    container2.style.display = 'none'
+}
+
+
 
 // signing users up
 const signupForm = document.querySelector('.login_form')
@@ -57,13 +87,14 @@ function signup(e) {
 
 // logging in and out
 const logoutButton = document.querySelector('#homepage_logout')
-var container2 = document.querySelector('.container2')
+
 logoutButton.addEventListener('click', () => {
     
     signOut(auth)
     .then(() => {
-        container2.style.display = "none"
+        container2.style.display = 'none'
         container.style.display = ""
+        location.replace(location.href.replace('?user_status=1', ''))
     })
     .catch((err) => {
         alert(err.message )
@@ -72,7 +103,7 @@ logoutButton.addEventListener('click', () => {
 
 const loginForm = document.querySelector('.login_form')
 const loginButton = document.querySelector('#login')
-var container = document.querySelector('.container')
+
 loginButton.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -235,3 +266,153 @@ githubLogin.addEventListener('click', (e) => {
   });
 
 })
+
+// Database
+const db = getFirestore()
+// collection reference
+const colRef = collection(db, 'comments')
+// get collection data
+getDocs(colRef)
+    .then((snapshot) => {
+        let comments = []
+        snapshot.docs.forEach((doc) => {
+            comments.push({ ...doc.data(), id: doc.id })
+        })
+        console.log(comments)
+        snapshot.docs.forEach(doc => {
+            renderComment(doc)
+        })
+    })
+    .catch(err => {
+        console.log(err.message)
+    })
+
+// CRUD
+const itemList = document.querySelector('.read')
+const crudForm = document.querySelector('.crud')
+const createButton = document.querySelector('.button2')
+createButton.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    addDoc(colRef, { comment: crudForm.comment.value })
+        .then(() => {
+            crudForm.reset()
+            if (user_status == 1) {
+                location.href = location.href
+            }else{
+                location.replace(location.href + "?user_status=1")
+            }
+
+        })
+})
+
+function deleteTheDamnDoc(document) {
+    let docRef = doc(db, "comments", document)
+    deleteDoc(docRef)
+    .then(() => {
+        if (user_status == 1) {
+            location.href = location.href
+        }else{
+            location.replace(location.href + "?user_status=1")
+        }
+    })
+    .catch(err => {
+        console.log(err.message)
+    })
+}
+
+var contForm = document.querySelector('.cont3');
+async function editTheDamnDoc(document, old_value) {
+    let docRef = doc(db, "comments", document)
+    contForm.updated_content.setAttribute('value', old_value)
+    contForm.updated_content.setAttribute('placeholder', 'Provide New Value')
+    hideDiv()
+
+    button3.addEventListener('click', (e) => {
+
+        e.preventDefault()
+        
+        updateDoc(docRef, { 
+            comment: contForm.updated_content.value 
+        })
+        .then(() => {
+            showDiv()
+            if (user_status == 1) {
+                location.href = location.href
+            }else{
+                location.replace(location.href + "?user_status=1")
+            }
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+
+    })
+}
+
+var button3 = document.getElementById('close_cont3')
+var button4 = document.getElementById('close_cont4')
+var container3 = document.querySelector('.container3')
+container3.style.display = 'none'
+button4.addEventListener('click', (e) => {
+
+    e.preventDefault()
+    showDiv()
+    if (user_status == 1) {
+        location.href = location.href
+    }else{
+        location.replace(location.href + "?user_status=1")
+    }
+})
+function hideDiv() {
+    container2.style.display = 'none'
+    container3.style.display = 'block'
+}
+function showDiv() {
+    container2.style.display = 'block'
+    container3.style.display = 'none'
+}
+
+const edit_icon = document.getElementById('read-icon1')
+const delete_icon = document.getElementById('read-icon2')
+function renderComment(doc){
+    let comment_container = document.createElement('div')
+    let comment_content = document.createElement('input')
+    const edit_icon_copy = edit_icon.cloneNode(true)
+    const delete_icon_copy = delete_icon.cloneNode(true)
+    comment_container.classList.add('item')
+    comment_content.setAttribute('type', 'text')
+    comment_content.setAttribute('id', 'item')
+    comment_content.setAttribute('value', doc.data().comment)
+    comment_content.setAttribute('data-id', doc.id)
+    comment_content.setAttribute('placeholder', doc.data().comment)
+    comment_content.disabled = true;
+    itemList.appendChild(comment_container)
+    comment_container.appendChild(comment_content)
+    comment_container.appendChild(edit_icon_copy)
+    comment_container.appendChild(delete_icon_copy)
+
+    //deleting data
+    delete_icon_copy.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        try {
+          const document = await doc.id; // Retrieve the document from the database
+          deleteTheDamnDoc(document)
+        } catch (error) {
+          console.log(error);
+        }
+      });
+
+    // update data
+    edit_icon_copy.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+            const old_value = await doc.data().comment
+            const document = await doc.id;
+            editTheDamnDoc(document, old_value)
+        } catch (error) {
+            console.log(error);
+        }
+    });
+      
+}
