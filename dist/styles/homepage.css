@@ -53,6 +53,7 @@
             height: 35%;
             margin-right: 8%;
             margin-bottom: 1%;
+            display: none;
         }
 
         .header_icons:last-child {
@@ -333,3 +334,223 @@ h2 {
     color: white;
 }
 /* FONT IDs */
+
+table {
+    background-color: #087285;
+    border: #065361 1px solid;
+    padding: 1%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.row {
+    padding: 5%;
+    box-sizing: border-box;
+}
+
+.column {
+    background-color: #065361;
+    border: #087285 1px solid;
+    font-family: garetBook;
+    color: white;
+    border-radius: 10px;
+}
+
+.column:hover {
+    background-color: #053942;
+    border: #087285 1px solid;
+    font-family: garetBook;
+    color: white;
+    cursor: cell;
+    border-radius: 10px;
+}
+
+.create2 {
+    background-color: #087285;
+    border: #065361 1px solid;
+    padding: 1%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: garetHeavy;
+    color: white;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.container4 {
+    width: 100%;
+    height: 100%;
+}
+
+.container5 {
+    width: 100%;
+    height: 100%;
+}
+
+.create_cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: garetHeavy;
+    color: black;
+}
+
+.create_cont input {
+    width: 50%;
+    height: 5%;
+    border-radius: 20px;
+    border: darkred 1px solid;
+    margin: 0% 0% 0.5% 0%;
+    padding: 1%;
+    box-sizing: border-box;
+    font-family: garetHeavy;
+    color: black;
+    background-color: rgb(160, 217, 240);
+}
+
+.create_cont input:hover {
+    width: 51%;
+    height: 5%;
+    border-radius: 20px;
+    border: darkred 1px solid;
+    margin: 0% 0% 0.5% 0%;
+    padding: 1%;
+    box-sizing: border-box;
+    font-family: garetHeavy;
+    color: black;
+    background-color: rgb(136, 205, 233);
+}
+
+#create_button {
+    background-color: rgb(3, 163, 163);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#cancel_button {
+    background-color: rgb(3, 163, 163);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.25%;
+    text-align: center;
+}
+
+#cancel_button2 {
+    background-color: rgb(3, 163, 163);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.25%;
+    text-align: center;
+}
+
+#create_button:hover {
+    background-color: rgb(12, 204, 204);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 6%;
+}
+
+#cancel_button:hover {
+    background-color: rgb(12, 204, 204);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.25%;
+    width: 6%;
+}
+
+#cancel_button2:hover {
+    background-color: rgb(12, 204, 204);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.25%;
+    width: 6%;
+}
+
+
+.update_cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: garetHeavy;
+    color: black;
+}
+
+.update_cont input {
+    width: 50%;
+    height: 5%;
+    border-radius: 20px;
+    border: darkred 1px solid;
+    margin: 0% 0% 0.5% 0%;
+    padding: 1%;
+    box-sizing: border-box;
+    font-family: garetHeavy;
+    color: black;
+    background-color: rgb(160, 217, 240);
+}
+
+.update_cont input:hover {
+    width: 51%;
+    height: 5%;
+    border-radius: 20px;
+    border: darkred 1px solid;
+    margin: 0% 0% 0.5% 0%;
+    padding: 1%;
+    box-sizing: border-box;
+    font-family: garetHeavy;
+    color: black;
+    background-color: rgb(136, 205, 233);
+}
+
+#update_button {
+    background-color: rgb(3, 163, 163);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#update_button:hover {
+    background-color: rgb(12, 204, 204);
+    border:rgb(6, 85, 85) 1px solid;
+    padding: 0.50%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 6%;
+}
+
+.container6 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

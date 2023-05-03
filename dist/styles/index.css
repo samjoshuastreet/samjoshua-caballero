@@ -7,7 +7,7 @@ body {
 }
 
 .bg {
-    background-color: #E7DFD8;
+    background-color: #d41f1f;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-    background-color: #E7DFD8;
+    background-color: #d41f1f;
     height: 100%;
     width: 100%;
     border: 1px black solid;
