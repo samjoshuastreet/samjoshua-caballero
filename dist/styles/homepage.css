@@ -6,29 +6,29 @@
     display: contents;
 }
 
-    .bg::-webkit-scrollbar {
+    .bg2::-webkit-scrollbar {
         width: 10px;
     }
 
-    .bg::-webkit-scrollbar-track {
+    .bg2::-webkit-scrollbar-track {
         background-color: #dfc2a8;
         border-radius: 20px;
         border: 1px solid rgba(0,0,0,0.20);
     }
 
-    .bg::-webkit-scrollbar-thumb {
-        background-color:#4f914f;
+    .bg2::-webkit-scrollbar-thumb {
+        background-color:#F66203;
         border-radius: 20px;
         border: 1px solid rgba(0,0,0,0.20);
     }
 
-    .bg::-webkit-scrollbar-thumb:hover {
-        background-color:#3c6b3c;
+    .bg2::-webkit-scrollbar-thumb:hover {
+        background-color:#F66203;
         border-radius: 20px;
         border: 1px solid rgba(0,0,0,0.20);
     }
 
-.container2 .bg {
+.container2 .bg2 {
     overflow: auto;
 }
 
@@ -97,7 +97,7 @@
 
     #homepage_logout {
         font-family: garetHeavy;
-        color: black;
+        color: #21272B;
         margin-right: 2%;
         padding: 1%;
         box-sizing: border-box;
@@ -323,6 +323,10 @@
     font-family: garetBook;
     src: url(../fonts/Garet-Book.ttf);
 }
+@font-face {
+    font-family: gordon;
+    src: url(../fonts/CsGordon-YzRaL.otf);
+}
 
 h1 {
     font-family: garetHeavy;
@@ -333,37 +337,12 @@ h2 {
     font-family: garetBook;
     color: white;
 }
+
+h3 {
+    font-family: gordon;
+    color: black;
+}
 /* FONT IDs */
-
-table {
-    background-color: #087285;
-    border: #065361 1px solid;
-    padding: 1%;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-
-.row {
-    padding: 5%;
-    box-sizing: border-box;
-}
-
-.column {
-    background-color: #065361;
-    border: #087285 1px solid;
-    font-family: garetBook;
-    color: white;
-    border-radius: 10px;
-}
-
-.column:hover {
-    background-color: #053942;
-    border: #087285 1px solid;
-    font-family: garetBook;
-    color: white;
-    cursor: cell;
-    border-radius: 10px;
-}
 
 .create2 {
     background-color: #087285;
@@ -553,4 +532,84 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.crud h3 {
+    font-size: small;
+    color: #4fa4b3
+}
+
+.iot-data {
+    background-color: #fff4ed;
+    width: 100%;
+    height: fit-content;
+    border: 1px solid #ffb283;
+    box-sizing: border-box;
+    border-radius: 50px;
+    margin: 1% 0 0 0;
+    text-align: center;
+}
+
+.results {
+    color: #4fa4b3;
+    font-size: x-large;
+    margin: 0;
+}
+
+.label {
+    color: #05507f;
+    font-size: x-small;
+    margin: 2.5% 0;
+}
+
+table {
+    width: 50%;
+    text-align: center;
+    border-spacing: 10px;
+    margin: 5% 25% 5% 25%;
+}
+#first {
+    background-color: #ffc7a5;
+    padding: 5% 5% 3.5% 5%;
+    border-top: #ffb283 solid 1px;
+    border-left: #ffb283 solid 1px;
+    border-right: #ffb283 solid 1px;
+    border-radius: 20px 20px 20px 20px;
+    width: 50%;
+    margin-right: 10%;
+}
+#second {
+    background-color: #ffc7a5;
+    padding: 5% 5% 3.5% 5%;
+    border-top: #ffb283 solid 1px;
+    border-left: #ffb283 solid 1px;
+    border-right: #ffb283 solid 1px;
+    border-radius: 20px 20px 20px 20px;
+    width: 50%;
+    margin-left: 2.5%;
+}
+
+.live-results {
+    width: 100%;
+}
+
+.visuals {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.visuals2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#test {
+    color: #05507f;
+    font-size: x-large;
+}
+#test2 {
+    color: #05507f;
+    font-size: x-large;
 }

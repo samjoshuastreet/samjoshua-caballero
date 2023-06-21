@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/homepage.css">
 
+    <!-- Scripts -->
+    <script src="./js/plotly.min.js"></script>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="./images/logo/logoonly.ico" type="image/x-icon">     
     
@@ -78,7 +81,7 @@
 
             <div class="photo">
 
-                <img id="login_img" src="images/sam1.png">
+                <img id="login_img" src="images/sam1.jpg">
 
             </div> <!--Photo-->
 
@@ -92,16 +95,7 @@
         
             </div> <!--Logout-->
             
-            <div class="bg">
-        
-                <div class="header2">
-        
-                    <img id="portfolio" class="header_icons" src="./images/texts/portfolio.png">
-                    <img id="education" class="header_icons" src="./images/texts/education.png">
-                    <img id="socials" class="header_icons" src="./images/texts/socials.png">
-                    <img id="email" class="header_icons" src="./images/texts/email.png">
-        
-                </div>
+            <div class="bg2">
         
                 <div class="photo2">
         
@@ -113,198 +107,60 @@
 
                     <div class="crud-indicator">
 
-                        <img id="crud-indicator-img" src="./images/texts/crud_sign.png">
+                        <h3>Scroll Down for More!</h3>
 
                     </div>
-
-                    <div class="create2" id="create4">
-
-                        View Vizualization
-
-                    </div>
-
-                    <div class="create2" id="create3">
-
-                        Add New Data
-
-                    </div>
-
-                    <!-- <div class="create">
-
-                        <input type="text" id="create" name="comment" placeholder="Add a comment followed by -your name">
-                        <div class="button2">Save</div>
-
-                    </div> Create -->
-
-                    <table class="create2" id="read">
-
-                        <tr>
-    
-                            <td>
-    
-                                <h1>Console Name</h1>
-    
-                            </td>
-                            <td>
-    
-                                <h1>Type</h1>
-    
-                            </td>
-                            <td>
-    
-                                <h1>Company</h1>
-    
-                            </td>
-                            <td>
-    
-                                <h1>Released Year</h1>
-    
-                            </td>
-                            <td>
-    
-                                <h1>Discontinuation Year</h1>
-    
-                            </td>
-                            <td>
-    
-                                <h1>Units Sold in Millions</h1>
-    
-                            </td>
-                            <td>
-
-                                <h1>Action</h1>
-
-                            </td>
-    
-                        </tr>
-                        <tr style="display:none" class="row">
-    
-                            <td class="column">
-    
-                                Console Name
-    
-                            </td>
-                            <td class="column">
-    
-                                Type
-    
-                            </td>
-                            <td class="column">
-    
-                                Company
-    
-                            </td>
-                            <td class="column"> 
-    
-                                Released Year
-    
-                            </td>
-                            <td class="column">
-    
-                                Discontinuation Year
-    
-                            </td>
-                            <td class="column">
-    
-                                Units Sold in Millions
-    
-                            </td>
-                            <td class="column">
-
-                                <div style="display:none" class="item">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="read-icon1" width="20" height="20" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="read-icon2" width="20" height="20" fill="white" class="bi bi-trash" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                                    </svg>
-                                </div> <!--Item-->
-
-                            </td>
-    
-                        </tr>
-    
-                    </table>
-
-                    <!-- <div class="read">
-
-                        <div style="display:none" class="item">
-                            <input type="text" id="item" name="" placeholder="Add a comment followed by -your name">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="read-icon1" width="20" height="20" fill="white" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="read-icon2" width="20" height="20" fill="white" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                            </svg>
-                        </div> Item
-
-                    </div> Read -->
 
                 </form> <!--Crud-->
+
+                <div class="iot-data">
+
+                    <div class="live-results">
+
+                        <table>
+
+                            <tr>
+
+                                <td id="first">
+
+                                    <h3 id="bpm" class="results">0.00</h3>
+                                    <h3 class="label">BPM</h3>
+
+                                </td>
+                                <td id="second">
+
+                                    <h3 id="oxy" class="results">0.00<span class="results">%</span></h3>
+                                    <h3 class="label">Oxygen Saturation</h3>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                    <h3><span id="test">Beats Per Minute</span></h3>
+                    <div class="visuals">
+                        
+                        <div id="line1" class="visual">
+                        </div>
+
+                    </div>
+
+                    <h3><span id="test2">Oxygen Saturation</span></h3>
+                    <div class="visuals2">
+
+                        <div id="line2" class="visual">
+                        </div>
+
+                    </div>
+
+                </div>
         
             </div> <!--BG-->
 
         </div> <!--Container 2-->
-
-        <div class="container3">
-
-            <form class="cont3">
-
-                <input type="text" name="updated_content" id="new_content_ref">
-                <div id="close_cont3" class="button2">Update</div>
-                <div id="close_cont4" class="button2">Cancel</div>
-
-            </form>
-
-        </div> <!--Container 3-->
-
-        <div class="container4">
-
-            <form class="create_cont">
-
-                <input type="text" placeholder="Input a console name" name="console_name" id="console_name_ref">
-                <input type="text" placeholder="Input a type" name="type" id="type_ref">
-                <input type="text" placeholder="Input a company" name="company" id="company_ref">
-                <input type="number" placeholder="Year of release" name="release_year" id="release_year_ref">
-                <input type="number" placeholder="Year of discontinuation" name="discontinuation_year" id="discontinuation_year_ref">
-                <input type="number" placeholder="Units sold in millions" name="units_sold_in_millions" id="units_sold_in_millions_ref">
-                <div id="create_button" class="create_button">Create</div>
-                <div id="cancel_button" class="cancel_button">Cancel</div>
-
-            </form>
-
-        </div> <!--Container 4-->
-
-        <div class="container5">
-
-            <form class="update_cont">
-
-                <input type="text" placeholder="Input a console name" name="console_name" id="console_name_ref">
-                <input type="text" placeholder="Input a type" name="type" id="type_ref">
-                <input type="text" placeholder="Input a company" name="company" id="company_ref">
-                <input type="number" placeholder="Year of release" name="release_year" id="release_year_ref">
-                <input type="number" placeholder="Year of discontinuation" name="discontinuation_year" id="discontinuation_year_ref">
-                <input type="number" placeholder="Units sold in millions" name="units_sold_in_millions" id="units_sold_in_millions_ref">
-                <div id="update_button" class="create_button">Update</div>
-                <div id="cancel_button2" class="cancel_button">Cancel</div>
-
-            </form>
-
-        </div> <!--Container 5-->
-
-        <div class="container6" id="container6">
-
-            <div class="create2" id="create5">
-
-                Exit
-
-            </div>
-
-        </div> <!--Container 6-->
 
     </div> <!--BG-->
 
